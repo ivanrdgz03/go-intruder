@@ -1,6 +1,6 @@
-# Go-Intruder: Fuzzer Web de Alto Rendimiento
+# Go-Intruder: intruder Web de Alto Rendimiento
 
-**Go-Intruder** es una herramienta de fuerza bruta web (fuzzer) ultra rápida, escrita en Go. Diseñada como una alternativa ligera y eficiente al "Intruder" de Burp Suite, que es muy lento en la versión gratuita, permite realizar miles de peticiones por segundo utilizando concurrencia real con GoRoutines.
+**Go-Intruder** es una herramienta de fuerza bruta web (intruder) ultra rápida, escrita en Go. Diseñada como una alternativa ligera y eficiente al "Intruder" de Burp Suite, que es muy lento en la versión gratuita, permite realizar miles de peticiones por segundo utilizando concurrencia real con GoRoutines.
 
 Soporta archivos de petición RAW, filtros de respuesta, salida en JSON detallado y seguimiento de redirecciones.
 
@@ -14,7 +14,7 @@ Soporta archivos de petición RAW, filtros de respuesta, salida en JSON detallad
 * **Redirecciones:** Soporte opcional para seguir redirecciones (`-L`).
 * **SSL/TLS:** Soporte para HTTPS.
 
-## 🛠️ Instalación y Compilación
+## Instalación y Compilación
 
 Necesitas tener [Go instalado](https://go.dev/dl/).
 
@@ -26,19 +26,19 @@ Necesitas tener [Go instalado](https://go.dev/dl/).
 1. Ataque básico (Login)
 Fuzzeo simple marcando el password en req.txt.
     ```bash
-    ./fuzzer -r request.txt -w rockyou.txt -t 20
+    ./intruder -r request.txt -w rockyou.txt -t 20
 2. Filtrando ruido
 Eliminar todas las respuestas 404 y aquellas que pesen exactamente 340 bytes.
     ```bash
-    ./fuzzer -r request.txt -w rutas.txt -fc 404 -fs 340
+    ./intruder -r request.txt -w rutas.txt -fc 404 -fs 340
 3. Guardando evidencia completa
 Guardar todas las respuestas (incluyendo el HTML) en un archivo JSON para análisis posterior.
     ```bash
-    ./fuzzer -r request.txt -w usuarios.txt -o resultados.json
+    ./intruder -r request.txt -w usuarios.txt -o resultados.json
 4. Fuzzing de Subdominios (Virtual Host)
 Si colocas el marcador $$ en el header Host dentro de request.txt.
     ```bash
-    ./fuzzer -r vhost_req.txt -w subdominios.txt -t 50
+    ./intruder -r vhost_req.txt -w subdominios.txt -t 50
 ## Formato del Archivo Request (-r)
 Copia la petición desde tu proxy (Burp Suite, Caido, ZAP) y guárdala en un archivo .txt. Reemplaza el valor que quieres atacar con $$.
 
